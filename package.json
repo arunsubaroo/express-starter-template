@@ -1,0 +1,115 @@
+{
+  "name": "express-starter-template",
+  "version": "1.0.0",
+  "description": "A template for express apps with, static file routing, a simple CRUD API, CORS, dotenv for configuration, zod for request validation &amp; winston for logging",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "clean": "rimraf dist",
+    "prebuild": "pnpm clean",
+    "build": "esbuild src/index.ts --platform=node --bundle --minify --outfile=dist/index.js",
+    "lint": "eslint --fix src test",
+    "test": "jest",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "express",
+    "winston",
+    "zod",
+    "todo",
+    "crud"
+  ],
+  "author": "Arun Subramanian R",
+  "license": "MIT",
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "jest": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": [
+        "./tsconfig.json"
+      ]
+    },
+    "extends": "airbnb-typescript/base",
+    "plugins": [
+      "import",
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "semi": "error",
+      "comma-dangle": 0,
+      "import/extensions": 0,
+      "no-underscore-dangle": 0,
+      "no-param-reassign": 0,
+      "camelcase": 0,
+      "@typescript-eslint/no-redeclare": 0,
+      "@typescript-eslint/indent":0
+    },
+    "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [
+          ".ts",
+          ".tsx"
+        ]
+      },
+      "import/resolver": {
+        "typescript": {}
+      }
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "printWidth": 80,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "tabWidth": 2
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "openapi3-ts": "^4.2.1",
+    "winston": "^3.11.0",
+    "zod": "^3.22.4",
+    "zod-to-json-schema": "^3.22.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/express-serve-static-core": "^4.17.41",
+    "@types/jest": "^29.5.11",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.10.6",
+    "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "esbuild": "^0.19.11",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{ts,js}": "./node_modules/.bin/eslint --fix",
+    "*.{ts,js,css,md}": "prettier --write"
+  }
+}
